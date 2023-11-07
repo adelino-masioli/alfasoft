@@ -24,20 +24,20 @@ class PersonController extends Controller
         return redirect()->route('persons.index');
     }
 
-    public function edit(Person $contact)
+    public function edit(Person $person)
     {
-        return view('persons.edit', compact('contact'));
+        return view('persons.edit', compact('person'));
     }
 
-    public function update(Request $request, Person $contact)
+    public function update(Request $request, Person $person)
     {
-        $contact->update($request->all());
+        $person->update($request->all());
         return redirect()->route('persons.index');
     }
 
-    public function destroy(Person $contact)
+    public function destroy(Person $person)
     {
-        $contact->delete();
+        $person->delete();
         return redirect()->route('persons.index');
     }
 }

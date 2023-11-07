@@ -5,6 +5,6 @@
 
 @section('content')
     @foreach ($persons as $person)
-    <p>{{ $person->name }} - {{ $person->email }}</p>
+    <p>{{ $person->id }} - {{ $person->name }} - {{ $person->email }}</p>
     @endforeach
 @endsection

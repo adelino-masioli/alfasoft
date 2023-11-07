@@ -22,6 +22,6 @@ Route::get('/', function () {
 Route::get('/persons', [PersonController::class, 'index'])->name('persons.index');
 Route::get('/persons/create', [PersonController::class, 'create'])->name('persons.create');
 Route::post('/persons', [PersonController::class, 'store'])->name('persons.store');
-Route::get('/persons/{contact}/edit', [PersonController::class, 'edit'])->name('persons.edit');
-Route::put('/persons/{contact}', [PersonController::class, 'update'])->name('persons.update');
-Route::delete('/persons/{contact}', [PersonController::class, 'destroy'])->name('persons.destroy');
+Route::get('/persons/{person}/edit', [PersonController::class, 'edit'])->name('persons.edit');
+Route::put('/persons/{person}', [PersonController::class, 'update'])->name('persons.update');
+Route::delete('/persons/{person}', [PersonController::class, 'destroy'])->name('persons.destroy');
