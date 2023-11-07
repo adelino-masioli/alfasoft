@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
 use App\Models\Person;
 use Illuminate\Http\Request;
 
@@ -20,8 +21,19 @@ class PersonController extends Controller
 
     public function store(Request $request)
     {
-        Person::create($request->all());
+        $data = $request->validate([
+            'name'  => 'required',
+            'email' => 'email|required',
+        ]);
+
+        Person::create($data);
         return redirect()->route('persons.index');
+    }
+
+    public function show(Person $person)
+    {
+        $contacts = $person->find($person->id)->contacts;
+        return view('persons.show', compact('person', 'contacts'));
     }
 
     public function edit(Person $person)
@@ -31,12 +43,18 @@ class PersonController extends Controller
 
     public function update(Request $request, Person $person)
     {
-        $person->update($request->all());
+        $data = $request->validate([
+            'name'  => 'required',
+            'email' => 'email|required',
+        ]);
+        $person->update($data);
         return redirect()->route('persons.index');
     }
 
-    public function destroy(Person $person)
+
+    public function destroy($id)
     {
+        $person = Person::findOrFail($id);
         $person->delete();
         return redirect()->route('persons.index');
     }
