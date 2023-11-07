@@ -33,3 +33,5 @@ Route::post('/contacts/{person}/store', [ContactController::class, 'store'])->na
 Route::get('/contacts/{contact}/edit', [ContactController::class, 'edit'])->name('contacts.edit');
 Route::put('/contacts/{contact}', [ContactController::class, 'update'])->name('contacts.update');
 Route::delete('/contacts/{id}', [ContactController::class, 'destroy'])->name('contacts.destroy');
+Route::get('/countries', [ContactController::class, 'getAllCountries'])->name('contacts.countries');
+Route::get('/countries/{name}', [ContactController::class, 'getCountry'])->name('contacts.country');

@@ -1,6 +1,14 @@
 <form method="POST" action="{{ route('contacts.store', $person) }}">
     @csrf
-    <input type="text" name="country_code" placeholder="Country code" value="{{ old('country_code') }}">
+    
+    <select name="country_code">
+        @foreach($countries as $key => $country)
+            @if ($country['idd'])
+                <option value="{{ $country['idd'] }}">{{ $country['name'] }}</option>
+            @endif
+        @endforeach
+    </select>
+
     @error('country_code')
         <div class="alert alert-danger">{{ $message }}</div>
     @enderror

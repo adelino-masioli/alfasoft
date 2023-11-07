@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Contact;
 use App\Models\Person;
 use Illuminate\Http\Request;
 
@@ -50,7 +49,6 @@ class PersonController extends Controller
         $person->update($data);
         return redirect()->route('persons.index');
     }
-
 
     public function destroy($id)
     {

@@ -1,7 +1,15 @@
 <form method="POST" action="{{ route('contacts.update', $contact) }}">
     @csrf
     @method('PUT')
-    <input type="text" name="country_code" value="{{ $contact->country_code }}">
+
+    <select name="country_code">
+        @foreach($countries as $key => $country)
+            @if ($country['idd'])
+                <option @if($contact->country_code === $country['idd']) selected @endif value="{{ $country['idd'] }}">{{ $country['name'] }}</option>
+            @endif
+        @endforeach
+    </select>
+
     @error('country_code')
         <div class="alert alert-danger">{{ $message }}</div>
     @enderror
