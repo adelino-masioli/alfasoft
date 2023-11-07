@@ -15,9 +15,9 @@
 
     </head>
     <body class="antialiased">
-        <div class="relative min-h-screen bg-gray-100 bg-center sm:flex sm:justify-center sm:items-center bg-dots-darker selection:bg-red-500 selection:text-white">
+        <div class="relative flex flex-col min-h-screen bg-gray-100 bg-center">
             @if (Route::has('login'))
-                <div class="z-10 p-6 text-right sm:fixed sm:top-0 sm:right-0">
+                <div class="z-10 w-full p-6 text-right sm:fixed sm:top-0 sm:right-0">
                     @auth
                         <a href="{{ url('/home') }}" class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Home</a>
 
@@ -37,7 +37,7 @@
                 </div>
             @endif
 
-            <div class="p-6 mx-auto max-w-7xl lg:p-8">
+            <div class="w-full p-6">
                 @yield('content')
             </div>
         </div>
