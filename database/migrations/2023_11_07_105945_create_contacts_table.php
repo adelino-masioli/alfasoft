@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('person_id');
             $table->string('country_code');
             $table->string('number');
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('person_id')->references('id')->on('people');
@@ -27,6 +28,9 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('contacts', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
         Schema::dropIfExists('contacts');
     }
 };
