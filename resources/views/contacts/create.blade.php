@@ -1,22 +1,55 @@
-<form method="POST" action="{{ route('contacts.store', $person) }}">
-    @csrf
-    
-    <select name="country_code">
-        @foreach($countries as $key => $country)
-            @if ($country['idd'])
-                <option value="{{ $country['idd'] }}">{{ $country['name'] }}</option>
-            @endif
-        @endforeach
-    </select>
+<!-- resources/views/person/index.blade.php -->
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="text-xl font-semibold leading-tight text-gray-800">
+            {{ __('Contact Create') }}
+        </h2>
+    </x-slot>
 
-    @error('country_code')
-        <div class="alert alert-danger">{{ $message }}</div>
-    @enderror
+    <div class="py-12">
+        <div class="mx-auto space-y-6 max-w-7xl sm:px-6 lg:px-8">
+            <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900">
 
-    <input type="number" name="number" placeholder="Number" value="{{ old('number') }}">
-    @error('number')
-        <div class="alert alert-danger">{{ $message }}</div>
-    @enderror
+                    <div class="w-full mb-5">
 
-    <button type="submit">Create Contact</button>
-</form>
+                        <a href="{{ route('persons.show', $person->id) }}" class="max-w-xs text-gray-800">&larr; Back</a>
+                    </div>
+                    <div class="max-w-xl">
+
+
+                        <form class="flex flex-col gap-3" method="POST"
+                            action="{{ route('contacts.store', $person) }}">
+                            @csrf
+
+                            <select name="country_code" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                                @foreach ($countries as $key => $country)
+                                    @if ($country['idd'])
+                                        <option value="{{ $country['idd'] }}">{{ $country['name'] }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+
+                            @error('country_code')
+                                <div class="text-red-600">{{ $message }}</div>
+                            @enderror
+
+
+                            <div>
+                                <x-input-label for="number" :value="__('Number')" />
+                                <x-text-input id="number" name="number" type="number" value="{{ old('number') }}" placeholder="Number"
+                                    class="block w-full mt-1" autocomplete="number" />
+                                <x-input-error :messages="$errors->get('number')" class="mt-2" />
+                            </div>
+
+                            <div class="flex items-center gap-4">
+                                <x-primary-button>{{ __('Save') }}</x-primary-button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</x-app-layout>
