@@ -1,66 +1,66 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## About Project
+
+### A traditional web application to manage contacts
+
+Application Features:
+
+-   1 - A page to list existing people.
+-   2 - A page to add a new person or edit an existing person.
+-   3 - A page to show the person details.
+-   4 - A page to add a new contact or edit an existing contact.
+-   5 - Allow deletion of a person.
+-   6 - Allow deletion of a contact.
+
+## Requirements
+
+A person is an entity with 3 fields: ID, name and email address. Name should be a string of any size greater than 5 and email should be a valid email address.
+
+A person can have any number of contacts. A contact is an entity with 3 fields: ID, CountryCode and Number. Number should be exactly 9 digits, CountryCode should be the callingCodes value obtained from an external API.
+
+The following API contains country information, including names and calling codes: https://restcountries.com/
+
+The form for adding a new contact should display a searchable dropdown where the user will select the country as well as an input to type the number. The list of countries displayed to the user should contain the country name and the calling code within (). - example: Portugal (351)
+
+The countries displayed in the dropdown should come directly from the API and allow searching using the API filtering features.
+
+Contacts saved to the database should contain the inserted number and a reference to the selected calling code.
+
+Each row in the person list page should have a link to show the details of the person, a link to edit the person and a button to delete the person. The delete should perform a soft delete of the record, keeping the record in the database but not visible.
+
+The person details page should show all the fields of the person as well as the list of contacts associated with the person. plus the edit link and the delete button. There should also be a button for creating a new contact associated with the person.
+
+Each of the contacts in the person details page should have an edit link and a delete button.
+
+Contact and email address should be unique within the system. There cannot be multiple people with the same email address, nor any duplicate contact tuple (CountryCode + Number).
+
+### Installation
+
+-   1 - Install Lavarel in your local environment: https://laravel.com/docs/10.x
+-   2 - git clone https://github.com/adelino-masioli/alfasoft
+-   3 - cd alfasoft
+-   4 - cp .env.example .env
+-   5 - php artisan key:generate or you can also use sail to handle this
+-   6 - composer install
+-   7 - npm run dev or npm run build
+
+### Screenshots
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+    <img src="public/screencapture/screencapture-00.png" width="600" alt="screencapture 00">
 </p>
 
-## About Laravel
+<p align="center">
+    <img src="public/screencapture/screencapture-01.png" width="600" alt="screencapture 01">
+</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<p align="center">
+    <img src="public/screencapture/screencapture-02.png" width="600" alt="screencapture 02">
+</p>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<p align="center">
+    <img src="public/screencapture/screencapture-03.png" width="600" alt="screencapture 03">
+</p>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<p align="center">
+    <img src="public/screencapture/screencapture-04.png" width="600" alt="screencapture 04">
+</p>
