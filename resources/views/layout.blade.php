@@ -10,22 +10,22 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
-        @routes
-        @vite(['resources/js/app.js'])
-
+    
     </head>
     <body class="antialiased">
-        <div class="relative flex flex-col min-h-screen bg-gray-100 bg-center">
+        <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 selection:bg-red-500 selection:text-white">
             @if (Route::has('login'))
-                <div class="z-10 w-full p-6 text-right sm:fixed sm:top-0 sm:right-0">
+                <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
                     @auth
-                        <a href="{{ url('/home') }}" class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Home</a>
+                        <a href="{{ url('/home') }}" class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Homes</a>
 
-                        <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        <form method="POST" action="{{ route('logout') }}" x-data>
                             @csrf
+
+                            <x-dropdown-link href="{{ route('logout') }}"
+                                     @click.prevent="$root.submit();">
+                                {{ __('Log Out') }}
+                            </x-dropdown-link>
                         </form>
                     @else
                         <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
@@ -37,7 +37,7 @@
                 </div>
             @endif
 
-            <div class="w-full p-6">
+            <div class="max-w-7xl mx-auto p-6 lg:p-8">
                 @yield('content')
             </div>
         </div>
