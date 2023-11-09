@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DashboardController;
 
 
 /*
@@ -21,9 +22,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::post('/dashboard/filter', [DashboardController::class, 'filter'])->middleware(['auth', 'verified'])->name('dashboard.filter');
+Route::GET('/dashboard/results/{country}', [DashboardController::class, 'result'])->middleware(['auth', 'verified'])->name('dashboard.results');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

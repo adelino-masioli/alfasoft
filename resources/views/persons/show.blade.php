@@ -40,6 +40,7 @@
                         </div>
 
 
+                        @if ($contacts->count() > 0)
                         <table class="w-full table-auto">
                             <thead>
                                 <tr>
@@ -70,13 +71,19 @@
                                         </td>
 
                                         <td class="text-left">{{ $contact->id }}</td>
-                                        <td class="text-left">{{ $contact->country_code }}</td>
+                                        <td class="text-left">({{ $contact->country_code }})</td>
                                         <td class="text-left">{{ $contact->number }}</td>
 
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
+
+                        @else
+                            <div>
+                                <p class="p-2 text-center border-t border-b border-gray-100">No records found</p>
+                            </div>
+                        @endif
 
                 </div>
             </div>

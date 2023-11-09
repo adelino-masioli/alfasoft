@@ -21,7 +21,7 @@
 
                             <div>
                                 <x-input-label for="name" :value="__('Name')" />
-                                <x-text-input id="name" name="name" type="text" placeholder="Name"
+                                <x-text-input id="name" name="name" type="text" placeholder="Name" value="{{ old('name') }}"
                                     class="block w-full mt-1" autocomplete="name" />
                                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
                             </div>
@@ -29,7 +29,7 @@
 
                             <div>
                                 <x-input-label for="email" :value="__('Email')" />
-                                <x-text-input id="email" name="email" type="email" placeholder="Email"
+                                <x-text-input id="email" name="email" type="email" placeholder="Email" value="{{ old('email') }}"
                                     class="block w-full mt-1" autocomplete="email" />
                                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
                             </div>

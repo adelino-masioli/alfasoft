@@ -22,7 +22,7 @@ class PersonController extends Controller
     {
         $data = $request->validate([
             'name'  => 'required',
-            'email' => 'email|required',
+            'email' => 'required|email|unique:people,email',
         ]);
 
         Person::create($data);
@@ -44,7 +44,7 @@ class PersonController extends Controller
     {
         $data = $request->validate([
             'name'  => 'required',
-            'email' => 'email|required',
+            'email' =>  'required|email|unique:people,email,'.$person->id,
         ]);
         $person->update($data);
         return redirect()->route('persons.index');

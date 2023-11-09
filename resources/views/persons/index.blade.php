@@ -18,6 +18,7 @@
                               </a>
                         </div>
 
+                        @if ($persons->count() > 0)
                         <table class="w-full table-auto">
                             <thead>
                                 <tr>
@@ -60,6 +61,12 @@
                                 @endforeach
                             </tbody>
                         </table>
+
+                        @else
+                            <div>
+                                <p class="p-2 text-center border-t border-b border-gray-100">No records found</p>
+                            </div>
+                        @endif
 
                 </div>
             </div>
